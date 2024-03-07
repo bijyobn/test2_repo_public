@@ -8,11 +8,24 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
-steps:
-- task: CopyFiles@2
-  displayName: 'Copy from file from Wroking Dir to GIT'
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/'
-    Contents: '**'
-    TargetFolder: 'https://github.com/bijyobn/test2_repo_public'
+jobs:
+- job: Job_1
+  displayName: Job 1 Started
+  steps:
+  - checkout: self
+    fetchDepth: 1
+  - task: CopyFiles@2
+    displayName: Copy Az Git to Working dir
+    inputs:
+      SourceFolder: $(Build.ArtifactStagingDirectory)
+      Contents: "**"
+      TargetFolder: $(System.DefaultWorkingDirectory)
+- job: Job_2
+  displayName: Job 2 Started
+  steps:
+  - task: CopyFiles@2
+    displayName: Copy from file from Wroking Dir to GIT
+    inputs:
+      SourceFolder: $(System.DefaultWorkingDirectory)
+      Contents: "**"
+      TargetFolder: "https://github.com/bijyobn/test2_repo_public"
