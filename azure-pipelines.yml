@@ -12,6 +12,6 @@ pool:
 steps:
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '**'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/'
     Contents: '**'
     TargetFolder: 'https://github.com/bijyobn/test2_repo_public.git'
