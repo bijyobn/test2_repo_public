@@ -6,7 +6,8 @@
 trigger:
 - none
 
-pool:
+pool: 
+  name: default
   vmImage: ubuntu-latest
 jobs:
 - job: Job_1
